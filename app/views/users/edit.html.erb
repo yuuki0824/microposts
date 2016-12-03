@@ -1,0 +1,45 @@
+<h1>profile edit</h1>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.present? %>
+    <div class="alert alert-danger">
+      <%= alert %>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div role="form">
+    <%= form_for @user do |f| %>
+        
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control"  %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control" %>
+
+      <%= f.label :age %>
+      <%= f.number_field :age, class: "form-control" %>
+        
+      <%= f.label :birthplace %>
+      <%= f.text_field :birthplace, class: "form-control" %>
+
+      <%= f.label :self_introducation %>
+      <%= f.text_area :self_introducation, class: "form-control" %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
+      
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+      
+      <%= f.submit "save profile", class: "btn btn-primary" %>
+      
+    <% end %>
+  </div>
+<% end %>

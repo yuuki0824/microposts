@@ -2,3 +2,16 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<div>
+  <p>年齢：<%= @user.age  %>歳</p>
+  <p>出身地：<%= @user.birthplace  %></p>
+  <p>
+    自己紹介：<br>
+    <%= @user.self_introducation  %>
+  </p>
+</div>
+
+<% if current_user?(@user) %>
+  <%= link_to "edit", edit_user_path(@user) %>
+<% end %>
