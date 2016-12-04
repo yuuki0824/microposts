@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   
   def show
+    @microposts = @user.microposts.order(created_at: :desc)
   end
   
   def new
@@ -24,7 +25,8 @@ class UsersController < ApplicationController
   
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'Profileを更新しました。'
+      flash[:success] = 'Profileを更新しました。'
+      redirect_to @user 
     else
       render 'edit'
     end

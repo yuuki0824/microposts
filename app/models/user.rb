@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   validates :birthplace, presence: true, length: {maximum: 50}
   validates :self_introducation, presence: true, length: {maximum: 400}
   has_secure_password
+  has_many :microposts
 end
