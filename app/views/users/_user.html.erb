@@ -1,6 +1,4 @@
-<ul class="user-list" >
-  <li class="user-list">
-    <%= gravatar_for user %>
-    <%= link_to "#{user.name}", user_path(user) %>
-  </li>
-</ul>
+<li class="user-list">
+  <%= gravatar_for user %>
+  <%= link_to "#{user.name}", user_path(user) %>
+</li>

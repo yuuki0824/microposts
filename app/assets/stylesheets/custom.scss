@@ -203,6 +203,10 @@ li {
   }
 }
 
-.user-list .gravatar {
-  float: none;
+li.user-list {
+  margin-top: 10px;
 }
+
+.user-list .gravatar {
+    float: none;
+  }
