@@ -1,23 +1,6 @@
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section class="user-profile well">
-      <p>年齢：<%= @user.age  %>歳</p>
-      <p>出身地：<%= @user.birthplace  %></p>
-      <p>
-        -自己紹介-<br>
-        <%= @user.self_introducation  %>
-      </p>
-      <% if current_user?(@user) %>
-        <%= link_to "Profile-edit", edit_user_path(@user) %>
-      <% end %>
-    </section>
-  </aside>
+  <%= render 'users/user_info' %>
+  
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>

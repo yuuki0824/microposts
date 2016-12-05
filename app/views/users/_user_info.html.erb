@@ -1,0 +1,36 @@
+<aside class="col-md-4">
+  <section class="user_info">
+    <h1>
+      <%= gravatar_for @user %>
+      <%= @user.name %>
+    </h1>
+  </section>
+  
+  <section class="stats">
+  <a href="<%= followings_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.following_users.count %>
+    </strong>
+    following
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.follower_users.count %>
+    </strong>
+    followers
+  </a>
+</section>
+    
+  <section class="user-profile well">
+    <p>年齢：<%= @user.age  %>歳</p>
+    <p>出身地：<%= @user.birthplace  %></p>
+    <p>
+      -自己紹介-<br>
+      <%= @user.self_introducation  %>
+    </p>
+    <% if current_user?(@user) %>
+      <%= link_to "Profile-edit", edit_user_path(@user) %>
+    <% end %>
+  </section>
+</aside>
+
