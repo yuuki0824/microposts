@@ -4,15 +4,19 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-  
+  post 'like/:micropost_id', to: 'likes#like', as: 'like'
+  delete 'unlike/:micropost_id', to: "likes#unlike", as: 'unlike'
+  get 'micropost/:id/liking_users', to: "microposts#liking_users", as: 'liking_users'
   resources :users do
     member do
-      get :followings, :followers
+      get :followings, :followers, :like_microposts
     end
   end
   #followers_user GET    /users/:id/followers(.:format)  users#followers
   #followings_user GET    /users/:id/followings(.:format)  users#followings
-  resources :microposts
+  resources :microposts do
+    resource :likes, only: [:create, :destroy]
+  end
   resources :relationships, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

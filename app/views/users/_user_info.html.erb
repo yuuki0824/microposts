@@ -1,8 +1,7 @@
 <aside class="col-md-4">
   <section class="user_info">
     <h1>
-      <%= gravatar_for @user %>
-      <%= @user.name %>
+      <%= render @user %>
     </h1>
   </section>
   
@@ -18,6 +17,12 @@
       <%= @user.follower_users.count %>
     </strong>
     followers
+  </a>
+  <a href="<%= like_microposts_user_path(@user) %>">
+    <strong id="user-likes" class="stat">
+      <%= @user.likes.count %>
+    </strong>
+    likes
   </a>
 </section>
     

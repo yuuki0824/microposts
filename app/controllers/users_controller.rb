@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
-  before_action :set_user , only: [:edit, :update, :show, :followings, :followers]
+  before_action :set_user , only: [:edit, :update, :show, :followings, :followers, :like_microposts]
   before_action :correct_user, only: [:edit, :update]
   
+  def index
+    @users = User.all
+    render :user
+  end
+  
   def show
+    @title = "Micropost"
     @microposts = @user.microposts.order(created_at: :desc)
   end
   
@@ -42,6 +48,12 @@ class UsersController < ApplicationController
     @title = "follower"
     @users = @user.follower_users
     render 'show_follow'
+  end
+  
+  def like_microposts
+    @microposts = @user.like_microposts
+    @title = "Like Micropost"
+    render :show
   end
   
   

@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
                                    foreign_key: "followed_id",
                                    dependent: :destroy
   has_many :follower_users, through: :follower_relationships, source: :follower
+  has_many :likes, dependent: :destroy
+  has_many :like_microposts, through: :likes, source: :micropost
   
   
   #他のユーザーをフォローする
@@ -38,5 +40,9 @@ class User < ActiveRecord::Base
   
   def feed_items
     Micropost.where(user_id: following_user_ids + [self.id])
+  end
+  
+  def favorite(other_user)
+    favorite_microposts.find_or_create_by(user_id: other_user.id)
   end
 end

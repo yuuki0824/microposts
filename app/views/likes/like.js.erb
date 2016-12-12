@@ -1,0 +1,2 @@
+$('#like-form-<%= @micropost.id %>').html("<%=j render 'microposts/unlike', micropost: @micropost %>");
+$('#like-count-<%= @micropost.id %>').html("<%= @micropost.liking_users.count %>");
