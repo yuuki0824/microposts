@@ -210,3 +210,8 @@ li.user-list {
 .user-list .gravatar {
     float: none;
   }
+
+li span.image img {
+  max-width: 300px;
+  max-height: 300px;
+}
